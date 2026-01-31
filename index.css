@@ -1089,7 +1089,7 @@ a:hover {
   font-size: var(--text-2xl);
   padding: var(--space-8) var(--space-12);
   letter-spacing: 0.05em;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-green);
 }
 
 .btn-submit:hover {
