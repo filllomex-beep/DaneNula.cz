@@ -1090,11 +1090,16 @@ a:hover {
   padding: var(--space-8) var(--space-12);
   letter-spacing: 0.05em;
   box-shadow: var(--shadow-green);
+  transition: all 0.3s ease-in-out;
+  border: 2px solid transparent;
 }
 
 .btn-submit:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-green-lg);
+  background: var(--color-white);
+  color: var(--color-green-600);
+  border-color: var(--color-green-600);
 }
 
 /* ===================================
