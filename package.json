@@ -1,0 +1,12 @@
+{
+  "name": "danenula-cz",
+  "version": "1.0.0",
+  "description": "Professional tax filing service website",
+  "scripts": {
+    "dev": "npx -y serve .",
+    "start": "npx -y serve ."
+  },
+  "keywords": ["tax", "website", "czech"],
+  "author": "Filip Plomakin",
+  "license": "ISC"
+}

@@ -82,6 +82,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // ===================================
+    // Pricing Card Auto-Selection
+    // ===================================
+
+    const pricingButtons = document.querySelectorAll('.pricing-cta');
+    const serviceTypeSelect = document.getElementById('service-type');
+    const formSection = document.getElementById('form');
+
+    pricingButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Get the service type from data attribute
+            const serviceType = this.getAttribute('data-service');
+
+            // Scroll to form section
+            const navbarHeight = document.getElementById('navbar').offsetHeight;
+            const formPosition = formSection.offsetTop - navbarHeight - 20;
+
+            window.scrollTo({
+                top: formPosition,
+                behavior: 'smooth'
+            });
+
+            // Wait for scroll to complete, then select the service type
+            setTimeout(() => {
+                if (serviceTypeSelect) {
+                    serviceTypeSelect.value = serviceType;
+                    // Add visual feedback
+                    serviceTypeSelect.style.borderColor = 'var(--color-green-500)';
+                    serviceTypeSelect.style.backgroundColor = 'var(--color-green-50)';
+
+                    // Remove visual feedback after 2 seconds
+                    setTimeout(() => {
+                        serviceTypeSelect.style.borderColor = '';
+                        serviceTypeSelect.style.backgroundColor = '';
+                    }, 2000);
+                }
+            }, 800);
+        });
+    });
+
+
+    // ===================================
     // Entity Type Toggle (OSVČ / s.r.o.)
     // ===================================
 
