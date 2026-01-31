@@ -483,9 +483,60 @@ a:hover {
   }
 }
 
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .fade-in-up {
   opacity: 0;
   animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-left {
+  opacity: 0;
+  animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade-in-right {
+  opacity: 0;
+  animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger animation delays for hero elements */
+.hero-text .fade-in-left:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.hero-text .fade-in-left:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.hero-text .fade-in-left:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.hero-image .fade-in-right {
+  animation-delay: 0.3s;
 }
 
 .scroll-reveal {
