@@ -1093,8 +1093,8 @@ a:hover {
 }
 
 .btn-submit:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.4);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-green-lg);
 }
 
 /* ===================================
