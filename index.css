@@ -772,7 +772,8 @@ a:hover {
 .process-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-xl);
-  border-color: var(--color-green-300);
+  border-color: var(--color-green-500);
+  border-width: 3px;
 }
 
 .process-step-badge {
@@ -869,7 +870,8 @@ a:hover {
 .pricing-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-xl);
-  border-color: var(--color-green-300);
+  border-color: var(--color-green-500);
+  border-width: 3px;
 }
 
 .pricing-card-popular {
