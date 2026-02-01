@@ -125,6 +125,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // ===================================
+    // Conditional POHODA Fields
+    // ===================================
+
+    const servicePackageSelect = document.getElementById('service-package');
+    const pohodaFields = document.querySelectorAll('.pohoda-only');
+    const zeroIncomeConfirm = document.getElementById('zero-income-confirm');
+    const zeroDeclarationConsent = document.getElementById('zero-declaration-consent');
+
+    if (servicePackageSelect) {
+        servicePackageSelect.addEventListener('change', function () {
+            const isPohoda = this.value === 'pohoda';
+
+            pohodaFields.forEach(field => {
+                if (isPohoda) {
+                    field.style.display = 'block';
+                    // Make fields required for POHODA package
+                    if (zeroIncomeConfirm) zeroIncomeConfirm.required = true;
+                    if (zeroDeclarationConsent) zeroDeclarationConsent.required = true;
+                } else {
+                    field.style.display = 'none';
+                    // Remove required attribute for other packages
+                    if (zeroIncomeConfirm) {
+                        zeroIncomeConfirm.required = false;
+                        zeroIncomeConfirm.checked = false;
+                    }
+                    if (zeroDeclarationConsent) {
+                        zeroDeclarationConsent.required = false;
+                        zeroDeclarationConsent.checked = false;
+                    }
+                }
+            });
+        });
+    }
+
+
+    // ===================================
+    // Conditional Data Box Field (Block F)
+    // ===================================
+
+    const filingMethodRadios = document.querySelectorAll('input[name="filing-method"]');
+    const dataBoxField = document.querySelector('.data-box-field');
+    const dataBoxInput = document.getElementById('data-box-id');
+
+    filingMethodRadios.forEach(radio => {
+        radio.addEventListener('change', function () {
+            const isFilingForMe = this.value === 'za-me';
+
+            if (dataBoxField && dataBoxInput) {
+                if (isFilingForMe) {
+                    dataBoxField.style.display = 'block';
+                    dataBoxInput.required = true;
+                } else {
+                    dataBoxField.style.display = 'none';
+                    dataBoxInput.required = false;
+                    dataBoxInput.value = '';
+                }
+            }
+        });
+    });
+
+
+    // ===================================
     // Entity Type Toggle (OSVČ / s.r.o.)
     // ===================================
 

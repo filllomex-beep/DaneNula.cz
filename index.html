@@ -458,94 +458,289 @@
                 </div>
 
                 <form id="tax-form">
-                    <!-- Block A: Kdo jste? -->
+                    <!-- Block A: Výběr služby -->
                     <div class="form-block">
-                        <h3 class="form-block-title">Blok A: Kdo jste?</h3>
+                        <h3 class="form-block-title">Blok A: Výběr služby</h3>
+                        <div class="form-group">
+                            <label for="service-package" class="form-label">Vyberte si balíček služeb *</label>
+                            <select id="service-package" name="service-package" class="form-input form-select-large"
+                                required>
+                                <option value="">Vyberte balíček</option>
+                                <option value="pohoda">POHODA</option>
+                                <option value="standard">STANDARD</option>
+                                <option value="maximum">MAXIMUM</option>
+                                <option value="sro">S.R.O.</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Block B: Osobní údaje -->
+                    <div class="form-block">
+                        <h3 class="form-block-title">Blok B: Osobní údaje</h3>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="first-name" class="form-label">Jméno *</label>
-                                <input type="text" id="first-name" name="first-name" class="form-input" required>
+                                <input type="text" id="first-name" name="first-name" class="form-input"
+                                    placeholder="Jan" required>
                             </div>
                             <div class="form-group">
                                 <label for="last-name" class="form-label">Příjmení *</label>
-                                <input type="text" id="last-name" name="last-name" class="form-input" required>
+                                <input type="text" id="last-name" name="last-name" class="form-input"
+                                    placeholder="Novák" required>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address" class="form-label">Adresa trvalého pobytu *</label>
+                            <input type="text" id="address" name="address" class="form-input"
+                                placeholder="Ulice, č.p., obec, PSČ" required>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email" class="form-label">E-mail *</label>
-                                <input type="email" id="email" name="email" class="form-input" required>
+                                <input type="email" id="email" name="email" class="form-input"
+                                    placeholder="jan.novak@priklad.cz" required>
                             </div>
                             <div class="form-group">
                                 <label for="phone" class="form-label">Telefon *</label>
-                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                                <input type="tel" id="phone" name="phone" class="form-input"
+                                    placeholder="+420 123 456 789" required>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nationality" class="form-label">Státní příslušnost *</label>
+                            <input type="text" id="nationality" name="nationality" class="form-input"
+                                placeholder="Česká republika" required>
                         </div>
                     </div>
 
-                    <!-- Block B: Identifikace -->
+                    <!-- Block C: Místní příslušnost a identifikace -->
                     <div class="form-block">
-                        <h3 class="form-block-title">Blok B: Identifikace</h3>
+                        <h3 class="form-block-title">Blok C: Místní příslušnost a identifikace</h3>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="ico" class="form-label">IČO *</label>
-                                <input type="text" id="ico" name="ico" class="form-input" required
-                                    placeholder="12345678" maxlength="8">
-                                <small style="color: var(--color-gray-600); font-size: var(--text-sm);">
-                                    Zadejte 8místné IČO
-                                </small>
+                                <input type="text" id="ico" name="ico" class="form-input" placeholder="12345678"
+                                    maxlength="8" required>
+                                <small class="form-hint">Zadejte 8místné IČO</small>
                             </div>
                             <div class="form-group">
                                 <label for="dic" class="form-label">DIČ</label>
-                                <input type="text" id="dic" name="dic" class="form-input" placeholder="CZ12345678">
+                                <input type="text" id="dic" name="dic" class="form-input" placeholder="CZ1234567890">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="insurance-company" class="form-label">Název pojišťovny *</label>
-                            <select id="insurance-company" name="insurance-company" class="form-input" required>
-                                <option value="">Vyberte pojišťovnu</option>
-                                <option value="vzp">VZP - Všeobecná zdravotní pojišťovna</option>
-                                <option value="vozp">VOZP - Vojenská zdravotní pojišťovna</option>
-                                <option value="cpzp">ČPZP - Česká průmyslová zdravotní pojišťovna</option>
-                                <option value="ozp">OZP - Oborová zdravotní pojišťovna</option>
-                                <option value="zpmv">ZPMV - Zaměstnanecká pojišťovna Škoda</option>
-                                <option value="zps">ZPŠ - Zdravotní pojišťovna Ministerstva vnitra</option>
-                                <option value="rbp">RBP - Revírní bratrská pokladna</option>
-                            </select>
+                            <label for="tax-office" class="form-label">Místní příslušnost (FÚ) *</label>
+                            <input type="text" id="tax-office" name="tax-office" class="form-input"
+                                placeholder="Finanční úřad pro (např. Prahu 1)..." required>
                         </div>
-                    </div>
 
-                    <!-- Block C: Typ přiznání -->
-                    <div class="form-block">
-                        <h3 class="form-block-title">Blok C: Typ přiznání</h3>
                         <div class="form-group">
-                            <label for="service-type" class="form-label">Vyberte typ služby *</label>
-                            <select id="service-type" name="service-type" class="form-input form-select-large" required>
-                                <option value="">Vyberte typ přiznání</option>
-                                <option value="nulove-osvc">Nulové OSVČ</option>
-                                <option value="nulove-sro">Nulové s.r.o.</option>
-                                <option value="aktivni-ztrata">Aktivní se ztrátou</option>
-                            </select>
-                            <small
-                                style="color: var(--color-gray-600); font-size: var(--text-sm); display: block; margin-top: var(--space-2);">
-                                Pokud jste klikli na balíček v ceníku, typ je již předvybrán
-                            </small>
+                            <label for="health-insurance" class="form-label">Zdravotní pojišťovna *</label>
+                            <input type="text" id="health-insurance" name="health-insurance" class="form-input"
+                                placeholder="Název a kód (např. VZP, 111)" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="social-security-symbol" class="form-label">Unikátní variabilní symbol pro správu
+                                sociálního zabezpečení</label>
+                            <input type="text" id="social-security-symbol" name="social-security-symbol"
+                                class="form-input" placeholder="např. 123456789">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="activity-type" class="form-label">Typ činnosti *</label>
+                                <select id="activity-type" name="activity-type" class="form-input" required>
+                                    <option value="">Vyberte typ</option>
+                                    <option value="hlavni">Hlavní</option>
+                                    <option value="vedlejsi">Vedlejší</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="secondary-reason" class="form-label">Důvod pro vedlejší činnost</label>
+                                <input type="text" id="secondary-reason" name="secondary-reason" class="form-input"
+                                    placeholder="např. studium, důchod, mateřská dovolená">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Block D: Čestné prohlášení -->
+                    <!-- Block D: Daňové slevy, zvýhodnění a odpočty -->
                     <div class="form-block">
-                        <h3 class="form-block-title">Blok D: Čestné prohlášení</h3>
-                        <div class="form-checkbox">
-                            <input type="checkbox" id="zero-income" name="zero-income" required>
-                            <label for="zero-income">Potvrzuji nulové příjmy *</label>
+                        <h3 class="form-block-title">Blok D: Daňové slevy, zvýhodnění a odpočty</h3>
+
+                        <!-- Subsection 1: Slevy na dani -->
+                        <div class="form-subsection">
+                            <h4 class="form-subsection-title">1. Slevy na dani</h4>
+                            <div class="form-checkbox-group">
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="deduction-spouse" name="deduction-spouse">
+                                    <label for="deduction-spouse">Sleva na manželku/manžela (pečující o dítě do 3 let,
+                                        příjem do 68 tis. Kč)</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="deduction-disability-1-2"
+                                        name="deduction-disability-1-2">
+                                    <label for="deduction-disability-1-2">Sleva na invaliditu (I. nebo II.
+                                        stupeň)</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="deduction-disability-3" name="deduction-disability-3">
+                                    <label for="deduction-disability-3">Rozšířená sleva na invaliditu (III.
+                                        stupeň)</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="deduction-ztp" name="deduction-ztp">
+                                    <label for="deduction-ztp">Sleva na držitele průkazu ZTP/P</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="deduction-execution" name="deduction-execution">
+                                    <label for="deduction-execution">Sleva za zastavení exekuce</label>
+                                </div>
+                            </div>
                         </div>
 
+                        <!-- Subsection 2: Daňové zvýhodnění na děti -->
+                        <div class="form-subsection">
+                            <h4 class="form-subsection-title">2. Daňové zvýhodnění na děti</h4>
+                            <div class="form-checkbox-group">
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="child-benefit-1" name="child-benefit-1">
+                                    <label for="child-benefit-1">Zvýhodnění na 1. dítě</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="child-benefit-2" name="child-benefit-2">
+                                    <label for="child-benefit-2">Zvýhodnění na 2. dítě</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="child-benefit-3-plus" name="child-benefit-3-plus">
+                                    <label for="child-benefit-3-plus">Zvýhodnění na 3. a každé další dítě</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="child-benefit-ztp" name="child-benefit-ztp">
+                                    <label for="child-benefit-ztp">Dítě se slevou ZTP/P (dvojnásobná částka)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subsection 3: Nezdanitelné části (Odpočty od základu daně) -->
+                        <div class="form-subsection">
+                            <h4 class="form-subsection-title">3. Nezdanitelné části (Odpočty od základu daně)</h4>
+                            <div class="form-checkbox-group">
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="deduction-donations" name="deduction-donations">
+                                    <label for="deduction-donations">Dary (vč. darování krve)</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="deduction-mortgage" name="deduction-mortgage">
+                                    <label for="deduction-mortgage">Úroky z hypotéky nebo úvěru ze stavebního
+                                        spoření</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="deduction-pension" name="deduction-pension">
+                                    <label for="deduction-pension">Příspěvky na produkty spoření na stáří (penzijní,
+                                        životní)</label>
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="deduction-long-term-care"
+                                        name="deduction-long-term-care">
+                                    <label for="deduction-long-term-care">Pojistné na pojištění dlouhodobé péče</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Block E: Souhlas a odeslání -->
+                    <div class="form-block">
+                        <h3 class="form-block-title">Blok E: Ověření příjmů a souhlas</h3>
+
+                        <!-- Income verification questions -->
+                        <div class="form-group">
+                            <label class="form-label">Měl jste v daném roce jakékoli zdanitelné příjmy v ČR nebo v
+                                zahraničí? *</label>
+                            <div class="form-radio-group">
+                                <div class="form-radio">
+                                    <input type="radio" id="taxable-income-yes" name="taxable-income" value="ano"
+                                        required>
+                                    <label for="taxable-income-yes">Ano</label>
+                                </div>
+                                <div class="form-radio">
+                                    <input type="radio" id="taxable-income-no" name="taxable-income" value="ne"
+                                        required>
+                                    <label for="taxable-income-no">Ne</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Měl jste příjmy z pronájmu, kapitálového majetku nebo ostatní
+                                příjmy (např. krypto, prodej nemovitosti)? *</label>
+                            <div class="form-radio-group">
+                                <div class="form-radio">
+                                    <input type="radio" id="other-income-yes" name="other-income" value="ano" required>
+                                    <label for="other-income-yes">Ano</label>
+                                </div>
+                                <div class="form-radio">
+                                    <input type="radio" id="other-income-no" name="other-income" value="ne" required>
+                                    <label for="other-income-no">Ne</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Conditional fields for POHODA package -->
+                        <div class="form-group pohoda-only" style="display: none;">
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="zero-income-confirm" name="zero-income-confirm">
+                                <label for="zero-income-confirm">Potvrzuji nulové příjmy</label>
+                            </div>
+                            <small class="form-hint">Toto pole je povinné pouze pro balíček POHODA</small>
+                        </div>
+
+                        <div class="form-group pohoda-only" style="display: none;">
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="zero-declaration-consent" name="zero-declaration-consent">
+                                <label for="zero-declaration-consent">Souhlasím s podáním nulového přiznání</label>
+                            </div>
+                            <small class="form-hint">Toto pole je povinné pouze pro balíček POHODA</small>
+                        </div>
+
+                        <!-- GDPR consent -->
                         <div class="form-checkbox">
                             <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required>
-                            <label for="gdpr-consent">Souhlasím se zpracováním pro účely podání *</label>
+                            <label for="gdpr-consent">Souhlasím se zpracováním osobních údajů pro účely podání daňového
+                                přiznání *</label>
+                        </div>
+                    </div>
+
+                    <!-- Block F: Způsob podání -->
+                    <div class="form-block">
+                        <h3 class="form-block-title">Blok F: Způsob podání</h3>
+
+                        <div class="form-group">
+                            <label class="form-label">Jak chcete podat daňové přiznání? *</label>
+                            <div class="form-radio-group-vertical">
+                                <div class="form-radio">
+                                    <input type="radio" id="filing-method-service" name="filing-method" value="za-me"
+                                        required>
+                                    <label for="filing-method-service">Chci, abyste daňové přiznání podali za mě</label>
+                                </div>
+                                <div class="form-radio">
+                                    <input type="radio" id="filing-method-self" name="filing-method" value="sam"
+                                        required>
+                                    <label for="filing-method-self">Daňové přiznání podám sám</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Conditional field for data box ID -->
+                        <div class="form-group data-box-field" style="display: none;">
+                            <label for="data-box-id" class="form-label">ID Datové schránky *</label>
+                            <input type="text" id="data-box-id" name="data-box-id" class="form-input"
+                                placeholder="např. abc123de">
+                            <small class="form-hint">Nezbytné pro elektronické podání za vás</small>
                         </div>
                     </div>
 
