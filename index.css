@@ -959,11 +959,6 @@ a:hover {
   stroke: var(--color-green-500);
 }
 
-.pricing-cta {
-  width: 100%;
-  margin-top: auto;
-}
-
 .pricing-note {
   text-align: center;
   font-size: var(--text-sm);
@@ -979,6 +974,88 @@ a:hover {
 .pricing-note a:hover {
   color: var(--color-green-700);
   text-decoration: underline;
+}
+
+/* Pricing Actions Container */
+.pricing-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: auto;
+  width: 100%;
+}
+
+/* Learn More Button */
+.btn-learn-more {
+  position: relative;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-green-600);
+  background-color: transparent;
+  border: 2px solid var(--color-green-500);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.btn-learn-more:hover {
+  background-color: var(--color-green-50);
+  border-color: var(--color-green-600);
+  color: var(--color-green-700);
+}
+
+/* Tooltip */
+.btn-learn-more .tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 320px;
+  max-width: 90vw;
+  padding: var(--space-4);
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2xl);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all var(--transition-base);
+  z-index: 100;
+}
+
+/* Tooltip arrow */
+.btn-learn-more .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: var(--color-gray-900);
+}
+
+/* Show tooltip on hover */
+.btn-learn-more:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.btn-learn-more .tooltip strong {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-green-400);
+  font-size: var(--text-base);
+}
+
+.pricing-cta {
+  width: 100%;
 }
 
 /* ===================================
