@@ -4,9 +4,20 @@
   "description": "Professional tax filing service website",
   "scripts": {
     "dev": "npx -y serve .",
-    "start": "npx -y serve ."
+    "start": "npx -y serve .",
+    "api": "node api.js"
   },
-  "keywords": ["tax", "website", "czech"],
+  "keywords": [
+    "tax",
+    "website",
+    "czech"
+  ],
   "author": "Filip Plomakin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "resend": "^6.9.1"
+  }
 }

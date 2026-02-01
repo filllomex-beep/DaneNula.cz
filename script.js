@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (servicePackageSelect) {
         servicePackageSelect.addEventListener('change', function () {
-            const isPohoda = this.value === 'pohoda';
+            const isPohoda = this.value === 'POHODA';
 
             pohodaFields.forEach(field => {
                 if (isPohoda) {
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     filingMethodRadios.forEach(radio => {
         radio.addEventListener('change', function () {
-            const isFilingForMe = this.value === 'za-me';
+            const isFilingForMe = this.value === 'Chci, abyste přiznání podali za mě (přes moji Datovou schránku)';
 
             if (dataBoxField && dataBoxInput) {
                 if (isFilingForMe) {
@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+
     // ===================================
     // File Upload Handling
     // ===================================
@@ -215,16 +216,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const fileInput = document.getElementById('documents');
     const fileList = document.getElementById('file-list');
 
-    fileInput.addEventListener('change', function () {
-        const files = Array.from(this.files);
+    if (fileInput && fileList) {
+        fileInput.addEventListener('change', function () {
+            const files = Array.from(this.files);
 
-        if (files.length > 0) {
-            fileList.innerHTML = '<strong>Vybrané soubory:</strong><br>' +
-                files.map(file => `• ${file.name} (${formatFileSize(file.size)})`).join('<br>');
-        } else {
-            fileList.innerHTML = '';
-        }
-    });
+            if (files.length > 0) {
+                fileList.innerHTML = '<strong>Vybrané soubory:</strong><br>' +
+                    files.map(file => `• ${file.name} (${formatFileSize(file.size)})`).join('<br>');
+            } else {
+                fileList.innerHTML = '';
+            }
+        });
+    }
 
     function formatFileSize(bytes) {
         if (bytes === 0) return '0 Bytes';
@@ -241,28 +244,102 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const taxForm = document.getElementById('tax-form');
 
-    taxForm.addEventListener('submit', function (e) {
+    taxForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        // Get form data
+        // Collect all form data
         const formData = new FormData(taxForm);
         const data = {};
 
-        formData.forEach((value, key) => {
-            if (key !== 'documents') {
-                data[key] = value;
+        // Add simple fields
+        for (const [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+
+        // Collect tax deductions
+        const taxDeductions = [];
+        const deductionCheckboxes = [
+            'deduction-spouse', 'deduction-disability-1-2', 'deduction-disability-3',
+            'deduction-ztp', 'deduction-execution'
+        ];
+        deductionCheckboxes.forEach(id => {
+            const checkbox = document.getElementById(id);
+            if (checkbox?.checked && checkbox.value) {
+                taxDeductions.push(checkbox.value);
             }
         });
+        if (taxDeductions.length > 0) {
+            data['tax-deductions'] = taxDeductions;
+        }
 
-        // Add files info
-        const files = Array.from(fileInput.files);
-        data.documents = files.map(f => f.name);
+        // Collect child benefits
+        const childBenefits = [];
+        const childCheckboxes = [
+            'child-benefit-1', 'child-benefit-2', 'child-benefit-3-plus', 'child-benefit-ztp'
+        ];
+        childCheckboxes.forEach(id => {
+            const checkbox = document.getElementById(id);
+            if (checkbox?.checked && checkbox.value) {
+                childBenefits.push(checkbox.value);
+            }
+        });
+        if (childBenefits.length > 0) {
+            data['child-benefits'] = childBenefits;
+        }
 
-        // Log form data (in production, this would be sent to server)
-        console.log('Form submitted with data:', data);
+        // Collect deductible expenses
+        const deductibleExpenses = [];
+        const expenseCheckboxes = [
+            'deduction-donations', 'deduction-mortgage', 'deduction-pension', 'deduction-long-term-care'
+        ];
+        expenseCheckboxes.forEach(id => {
+            const checkbox = document.getElementById(id);
+            if (checkbox?.checked && checkbox.value) {
+                deductibleExpenses.push(checkbox.value);
+            }
+        });
+        if (deductibleExpenses.length > 0) {
+            data['deductible-expenses'] = deductibleExpenses;
+        }
 
-        // Show success message
-        showSuccessMessage();
+        // Collect POHODA confirmations
+        const pohodaConfirmations = [];
+        const zeroIncomeCheckbox = document.getElementById('zero-income-confirm');
+        if (zeroIncomeCheckbox?.checked && zeroIncomeCheckbox.value) {
+            pohodaConfirmations.push(zeroIncomeCheckbox.value);
+        }
+        const zeroConsentCheckbox = document.getElementById('zero-declaration-consent');
+        if (zeroConsentCheckbox?.checked && zeroConsentCheckbox.value) {
+            pohodaConfirmations.push(zeroConsentCheckbox.value);
+        }
+        if (pohodaConfirmations.length > 0) {
+            data['pohoda-confirmations'] = pohodaConfirmations;
+        }
+
+        try {
+            // Submit to serverless function (works in both local and production)
+            const response = await fetch('/api/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Show success message
+                showSuccessMessage();
+                // Reset form
+                taxForm.reset();
+            } else {
+                alert('Chyba při odesílání formuláře. Zkuste to prosím znovu.');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Chyba při odesílání formuláře. Zkuste to prosím znovu.');
+        }
     });
 
     function showSuccessMessage() {
@@ -310,34 +387,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Format PSČ (5 digits with space: XXX XX)
     const zipInput = document.getElementById('zip');
-    zipInput.addEventListener('input', function (e) {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length > 5) value = value.slice(0, 5);
-        if (value.length > 3) {
-            value = value.slice(0, 3) + ' ' + value.slice(3);
-        }
-        e.target.value = value;
-    });
+    if (zipInput) {
+        zipInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 5) value = value.slice(0, 5);
+            if (value.length > 3) {
+                value = value.slice(0, 3) + ' ' + value.slice(3);
+            }
+            e.target.value = value;
+        });
+    }
 
     // Format phone number
     const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function (e) {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length > 9) value = value.slice(0, 9);
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 9) value = value.slice(0, 9);
 
-        // Format as +420 XXX XXX XXX
-        if (value.length > 0) {
-            let formatted = '+420 ';
-            if (value.length <= 3) {
-                formatted += value;
-            } else if (value.length <= 6) {
-                formatted += value.slice(0, 3) + ' ' + value.slice(3);
-            } else {
-                formatted += value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6);
+            // Format as +420 XXX XXX XXX
+            if (value.length > 0) {
+                let formatted = '+420 ';
+                if (value.length <= 3) {
+                    formatted += value;
+                } else if (value.length <= 6) {
+                    formatted += value.slice(0, 3) + ' ' + value.slice(3);
+                } else {
+                    formatted += value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6);
+                }
+                e.target.value = formatted;
             }
-            e.target.value = formatted;
-        }
-    });
+        });
+    }
 
 
     // ===================================

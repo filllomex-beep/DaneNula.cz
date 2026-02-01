@@ -466,10 +466,10 @@
                             <select id="service-package" name="service-package" class="form-input form-select-large"
                                 required>
                                 <option value="">Vyberte balíček</option>
-                                <option value="pohoda">POHODA</option>
-                                <option value="standard">STANDARD</option>
-                                <option value="maximum">MAXIMUM</option>
-                                <option value="sro">S.R.O.</option>
+                                <option value="POHODA">POHODA</option>
+                                <option value="STANDARD">STANDARD</option>
+                                <option value="MAXIMUM">MAXIMUM</option>
+                                <option value="S.R.O.">S.R.O.</option>
                             </select>
                         </div>
                     </div>
@@ -556,8 +556,8 @@
                                 <label for="activity-type" class="form-label">Typ činnosti *</label>
                                 <select id="activity-type" name="activity-type" class="form-input" required>
                                     <option value="">Vyberte typ</option>
-                                    <option value="hlavni">Hlavní</option>
-                                    <option value="vedlejsi">Vedlejší</option>
+                                    <option value="Hlavní">Hlavní</option>
+                                    <option value="Vedlejší">Vedlejší</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -577,27 +577,31 @@
                             <h4 class="form-subsection-title">1. Slevy na dani</h4>
                             <div class="form-checkbox-group">
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="deduction-spouse" name="deduction-spouse">
+                                    <input type="checkbox" id="deduction-spouse" name="deduction-spouse"
+                                        value="Sleva na manželku / manžela (pečující o dítě do 3 let, příjem do 68 tis. Kč)">
                                     <label for="deduction-spouse">Sleva na manželku/manžela (pečující o dítě do 3 let,
                                         příjem do 68 tis. Kč)</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="deduction-disability-1-2"
-                                        name="deduction-disability-1-2">
+                                    <input type="checkbox" id="deduction-disability-1-2" name="deduction-disability-1-2"
+                                        value="Sleva na invaliditu (I. nebo II. stupeň)">
                                     <label for="deduction-disability-1-2">Sleva na invaliditu (I. nebo II.
                                         stupeň)</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="deduction-disability-3" name="deduction-disability-3">
+                                    <input type="checkbox" id="deduction-disability-3" name="deduction-disability-3"
+                                        value="Rozšířená sleva na invaliditu (III. stupeň)">
                                     <label for="deduction-disability-3">Rozšířená sleva na invaliditu (III.
                                         stupeň)</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="deduction-ztp" name="deduction-ztp">
+                                    <input type="checkbox" id="deduction-ztp" name="deduction-ztp"
+                                        value="Sleva na držitele průkazu ZTP / P">
                                     <label for="deduction-ztp">Sleva na držitele průkazu ZTP/P</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="deduction-execution" name="deduction-execution">
+                                    <input type="checkbox" id="deduction-execution" name="deduction-execution"
+                                        value="Sleva za zastavení exekuce">
                                     <label for="deduction-execution">Sleva za zastavení exekuce</label>
                                 </div>
                             </div>
@@ -608,19 +612,23 @@
                             <h4 class="form-subsection-title">2. Daňové zvýhodnění na děti</h4>
                             <div class="form-checkbox-group">
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="child-benefit-1" name="child-benefit-1">
+                                    <input type="checkbox" id="child-benefit-1" name="child-benefit-1"
+                                        value="Zvýhodnění na 1. dítě">
                                     <label for="child-benefit-1">Zvýhodnění na 1. dítě</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="child-benefit-2" name="child-benefit-2">
+                                    <input type="checkbox" id="child-benefit-2" name="child-benefit-2"
+                                        value="Zvýhodnění na 2. dítě">
                                     <label for="child-benefit-2">Zvýhodnění na 2. dítě</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="child-benefit-3-plus" name="child-benefit-3-plus">
+                                    <input type="checkbox" id="child-benefit-3-plus" name="child-benefit-3-plus"
+                                        value="Zvýhodnění na 3. a každé další dítě">
                                     <label for="child-benefit-3-plus">Zvýhodnění na 3. a každé další dítě</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="child-benefit-ztp" name="child-benefit-ztp">
+                                    <input type="checkbox" id="child-benefit-ztp" name="child-benefit-ztp"
+                                        value="Dítě se slevou ZTP / P (dvojnásobná částka)">
                                     <label for="child-benefit-ztp">Dítě se slevou ZTP/P (dvojnásobná částka)</label>
                                 </div>
                             </div>
@@ -631,22 +639,25 @@
                             <h4 class="form-subsection-title">3. Nezdanitelné části (Odpočty od základu daně)</h4>
                             <div class="form-checkbox-group">
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="deduction-donations" name="deduction-donations">
+                                    <input type="checkbox" id="deduction-donations" name="deduction-donations"
+                                        value="Dary (vč. darování krve)">
                                     <label for="deduction-donations">Dary (vč. darování krve)</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="deduction-mortgage" name="deduction-mortgage">
+                                    <input type="checkbox" id="deduction-mortgage" name="deduction-mortgage"
+                                        value="Úroky z hypotéky nebo úvěru ze stavebního spoření">
                                     <label for="deduction-mortgage">Úroky z hypotéky nebo úvěru ze stavebního
                                         spoření</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="deduction-pension" name="deduction-pension">
+                                    <input type="checkbox" id="deduction-pension" name="deduction-pension"
+                                        value="Příspěvky na produkty spoření na stáří (penzijní, životní)">
                                     <label for="deduction-pension">Příspěvky na produkty spoření na stáří (penzijní,
                                         životní)</label>
                                 </div>
                                 <div class="form-checkbox">
-                                    <input type="checkbox" id="deduction-long-term-care"
-                                        name="deduction-long-term-care">
+                                    <input type="checkbox" id="deduction-long-term-care" name="deduction-long-term-care"
+                                        value="Pojistné na pojištění dlouhodobé péče">
                                     <label for="deduction-long-term-care">Pojistné na pojištění dlouhodobé péče</label>
                                 </div>
                             </div>
@@ -663,12 +674,12 @@
                                 zahraničí? *</label>
                             <div class="form-radio-group">
                                 <div class="form-radio">
-                                    <input type="radio" id="taxable-income-yes" name="taxable-income" value="ano"
+                                    <input type="radio" id="taxable-income-yes" name="taxable-income" value="Ano"
                                         required>
                                     <label for="taxable-income-yes">Ano</label>
                                 </div>
                                 <div class="form-radio">
-                                    <input type="radio" id="taxable-income-no" name="taxable-income" value="ne"
+                                    <input type="radio" id="taxable-income-no" name="taxable-income" value="Ne"
                                         required>
                                     <label for="taxable-income-no">Ne</label>
                                 </div>
@@ -680,11 +691,11 @@
                                 příjmy (např. krypto, prodej nemovitosti)? *</label>
                             <div class="form-radio-group">
                                 <div class="form-radio">
-                                    <input type="radio" id="other-income-yes" name="other-income" value="ano" required>
+                                    <input type="radio" id="other-income-yes" name="other-income" value="Ano" required>
                                     <label for="other-income-yes">Ano</label>
                                 </div>
                                 <div class="form-radio">
-                                    <input type="radio" id="other-income-no" name="other-income" value="ne" required>
+                                    <input type="radio" id="other-income-no" name="other-income" value="Ne" required>
                                     <label for="other-income-no">Ne</label>
                                 </div>
                             </div>
@@ -693,7 +704,8 @@
                         <!-- Conditional fields for POHODA package -->
                         <div class="form-group pohoda-only" style="display: none;">
                             <div class="form-checkbox">
-                                <input type="checkbox" id="zero-income-confirm" name="zero-income-confirm">
+                                <input type="checkbox" id="zero-income-confirm" name="zero-income-confirm"
+                                    value="Potvrzuji nulové příjmy v uplynulém roce">
                                 <label for="zero-income-confirm">Potvrzuji nulové příjmy</label>
                             </div>
                             <small class="form-hint">Toto pole je povinné pouze pro balíček POHODA</small>
@@ -701,7 +713,8 @@
 
                         <div class="form-group pohoda-only" style="display: none;">
                             <div class="form-checkbox">
-                                <input type="checkbox" id="zero-declaration-consent" name="zero-declaration-consent">
+                                <input type="checkbox" id="zero-declaration-consent" name="zero-declaration-consent"
+                                    value="Souhlasím s podáním nulového přiznání">
                                 <label for="zero-declaration-consent">Souhlasím s podáním nulového přiznání</label>
                             </div>
                             <small class="form-hint">Toto pole je povinné pouze pro balíček POHODA</small>
@@ -723,12 +736,13 @@
                             <label class="form-label">Jak chcete podat daňové přiznání? *</label>
                             <div class="form-radio-group-vertical">
                                 <div class="form-radio">
-                                    <input type="radio" id="filing-method-service" name="filing-method" value="za-me"
+                                    <input type="radio" id="filing-method-service" name="filing-method"
+                                        value="Chci, abyste přiznání podali za mě (přes moji Datovou schránku)"
                                         required>
                                     <label for="filing-method-service">Chci, abyste daňové přiznání podali za mě</label>
                                 </div>
                                 <div class="form-radio">
-                                    <input type="radio" id="filing-method-self" name="filing-method" value="sam"
+                                    <input type="radio" id="filing-method-self" name="filing-method" value="Podám sám"
                                         required>
                                     <label for="filing-method-self">Daňové přiznání podám sám</label>
                                 </div>
