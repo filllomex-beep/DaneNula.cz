@@ -7,6 +7,14 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Log environment variables (without exposing the full key)
+    console.log('Environment check:');
+    console.log('- CLIENT_EMAIL exists:', !!process.env.GOOGLE_SHEETS_CLIENT_EMAIL);
+    console.log('- PRIVATE_KEY exists:', !!process.env.GOOGLE_SHEETS_PRIVATE_KEY);
+    console.log('- SPREADSHEET_ID exists:', !!process.env.GOOGLE_SHEETS_SPREADSHEET_ID);
+    console.log('- CLIENT_EMAIL value:', process.env.GOOGLE_SHEETS_CLIENT_EMAIL);
+    console.log('- SPREADSHEET_ID value:', process.env.GOOGLE_SHEETS_SPREADSHEET_ID);
+
     const formData = req.body;
 
     // Initialize Google Sheets API
@@ -54,8 +62,10 @@ export default async function handler(req, res) {
       formData['gdpr-consent'] === 'on' ? 'Ano' : 'Ne'
     ];
 
+    console.log('Attempting to append row to sheet...');
+
     // Append row to sheet
-    await sheets.spreadsheets.values.append({
+    const response = await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: 'A:X', // Columns A through X (24 columns)
       valueInputOption: 'RAW',
@@ -65,6 +75,7 @@ export default async function handler(req, res) {
     });
 
     console.log('✅ Form submission saved to Google Sheets');
+    console.log('Response:', response.data);
 
     return res.status(200).json({
       success: true,
@@ -72,11 +83,16 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Error saving to Google Sheets:', error);
+    console.error('❌ Error saving to Google Sheets:');
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
+
     return res.status(500).json({
       success: false,
       error: 'Failed to save submission',
-      details: error.message
+      details: error.message,
+      errorType: error.name
     });
   }
 }
