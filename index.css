@@ -1319,13 +1319,11 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: #FFFFFF !important;
     flex-direction: column;
     gap: 0;
     padding: var(--space-8) 0;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
@@ -1436,15 +1434,15 @@ a:hover {
   }
 
   .hero h1 {
-    font-size: 2rem;
-    line-height: 1.2;
+    font-size: 1.75rem;
+    line-height: 1.15;
     margin-bottom: var(--space-4);
   }
 
   .hero p {
     font-size: var(--text-base);
     margin-bottom: var(--space-6);
-    color: var(--color-gray-700);
+    color: #4B5563;
   }
 
   .hero-image {
@@ -1592,5 +1590,59 @@ a:hover {
   .footer-links {
     gap: var(--space-4);
     font-size: var(--text-sm);
+  }
+
+  /* Icon Scaling - Reduce size on mobile */
+  .value-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .value-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Enhanced Text Contrast for Mobile */
+  .value-prop p,
+  .process-description,
+  .pricing-card ul li {
+    color: #4B5563;
+  }
+
+  /* iPhone-Specific Optimizations */
+
+  /* Safe area insets for notched iPhones (iPhone X and later, including iPhone 17) */
+  body {
+    padding-top: max(80px, env(safe-area-inset-top));
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .navbar {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* iOS tap highlight color */
+  * {
+    -webkit-tap-highlight-color: rgba(16, 185, 129, 0.2);
+  }
+
+  /* Prevent text size adjustment on orientation change */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Smooth scrolling for iOS */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Form inputs - iOS specific */
+  .form-input,
+  .form-select,
+  .form-textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 }
