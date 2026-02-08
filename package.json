@@ -4,8 +4,7 @@
   "description": "Professional tax filing service website",
   "scripts": {
     "dev": "npx -y serve .",
-    "start": "npx -y serve .",
-    "api": "node api.js"
+    "start": "npx -y serve ."
   },
   "keywords": [
     "tax",
@@ -17,7 +16,6 @@
   "dependencies": {
     "body-parser": "^2.2.2",
     "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "googleapis": "^171.0.0"
+    "express": "^5.2.1"
   }
 }

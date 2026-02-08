@@ -1,0 +1,76 @@
+[
+  {
+    "id": "1769988830165",
+    "timestamp": "2026-02-01T23:33:50.165Z",
+    "data": {
+      "service-package": "STANDARD",
+      "first-name": "Jan",
+      "last-name": "Novák",
+      "address": "Hlavní 123, Praha",
+      "email": "jan.novak@example.cz",
+      "phone": "+420 777 123 456",
+      "nationality": "CZ",
+      "ico": "87654321",
+      "dic": "CZ87654321",
+      "tax-office": "Praha 2",
+      "health-insurance": "VZP 111",
+      "social-security-symbol": "",
+      "activity-type": "Hlavní",
+      "secondary-reason": "",
+      "deduction-spouse": "Sleva na manželku / manžela (pečující o dítě do 3 let, příjem do 68 tis. Kč)",
+      "taxable-income": "Ano",
+      "other-income": "Ne",
+      "gdpr-consent": "on",
+      "filing-method": "Podám sám",
+      "data-box-id": "",
+      "tax-deductions": [
+        "Sleva na manželku / manžela (pečující o dítě do 3 let, příjem do 68 tis. Kč)"
+      ]
+    }
+  },
+  {
+    "id": "1769989253834",
+    "timestamp": "2026-02-01T23:40:53.834Z",
+    "data": {
+      "service-package": "POHODA",
+      "first-name": "ahoj",
+      "last-name": "d",
+      "address": "d",
+      "email": "lomexfill@gmail.com",
+      "phone": "d",
+      "nationality": "d",
+      "ico": "2",
+      "dic": "d",
+      "tax-office": "d",
+      "health-insurance": "d",
+      "social-security-symbol": "d",
+      "activity-type": "Hlavní",
+      "secondary-reason": "d",
+      "deduction-spouse": "Sleva na manželku / manžela (pečující o dítě do 3 let, příjem do 68 tis. Kč)",
+      "child-benefit-1": "Zvýhodnění na 1. dítě",
+      "child-benefit-ztp": "Dítě se slevou ZTP / P (dvojnásobná částka)",
+      "deduction-donations": "Dary (vč. darování krve)",
+      "taxable-income": "Ano",
+      "other-income": "Ano",
+      "zero-income-confirm": "Potvrzuji nulové příjmy v uplynulém roce",
+      "zero-declaration-consent": "Souhlasím s podáním nulového přiznání",
+      "gdpr-consent": "on",
+      "filing-method": "Chci, abyste přiznání podali za mě (přes moji Datovou schránku)",
+      "data-box-id": "d",
+      "tax-deductions": [
+        "Sleva na manželku / manžela (pečující o dítě do 3 let, příjem do 68 tis. Kč)"
+      ],
+      "child-benefits": [
+        "Zvýhodnění na 1. dítě",
+        "Dítě se slevou ZTP / P (dvojnásobná částka)"
+      ],
+      "deductible-expenses": [
+        "Dary (vč. darování krve)"
+      ],
+      "pohoda-confirmations": [
+        "Potvrzuji nulové příjmy v uplynulém roce",
+        "Souhlasím s podáním nulového přiznání"
+      ]
+    }
+  }
+]
