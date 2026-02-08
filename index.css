@@ -1313,6 +1313,13 @@ a:hover {
     display: flex;
   }
 
+  /* Force solid white background on mobile - remove all transparency */
+  .navbar {
+    background-color: #FFFFFF !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
   .nav-menu {
     position: fixed;
     top: 70px;
@@ -1320,6 +1327,8 @@ a:hover {
     right: 0;
     bottom: 0;
     background-color: #FFFFFF !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     flex-direction: column;
     gap: 0;
     padding: var(--space-8) 0;
@@ -1366,7 +1375,15 @@ a:hover {
   }
 
   .hero-image {
-    height: 300px;
+    display: none;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-text .btn {
+    margin: 0 auto;
   }
 
   .form-row {
@@ -1401,6 +1418,20 @@ a:hover {
   .btn-submit {
     font-size: var(--text-xl);
     padding: var(--space-6) var(--space-8);
+  }
+
+  /* Center all buttons on mobile */
+  .pricing-cta,
+  .btn-primary {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pricing-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -1446,7 +1477,7 @@ a:hover {
   }
 
   .hero-image {
-    height: 250px;
+    display: none;
   }
 
   /* Buttons - Better touch targets */
