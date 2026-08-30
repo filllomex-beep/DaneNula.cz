@@ -1290,6 +1290,22 @@ a:hover {
   color: var(--color-green-500);
 }
 
+.footer-credit {
+  /* pull up: .footer-content uses a 1.5rem flex gap, keep the credit close to the copyright */
+  margin: calc(var(--space-6) * -1 + var(--space-2)) 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-gray-300);
+}
+
+.footer-credit a {
+  color: var(--color-gray-300);
+  text-decoration: underline;
+}
+
+.footer-credit a:hover {
+  color: var(--color-white);
+}
+
 /* ===================================
    Responsive Design
    =================================== */

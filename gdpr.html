@@ -123,7 +123,63 @@
             color: #9ca3af;
             border-top: 1px solid #e5e7eb;
         }
+
+        .footer-credit {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .footer-credit a {
+            color: inherit;
+            text-decoration: underline;
+        }
     </style>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.danenula.cz/#organization",
+          "name": "DaněNula.cz",
+          "legalName": "Filipp Lomakin",
+          "url": "https://www.danenula.cz/",
+          "logo": "https://www.danenula.cz/assets/logo.jpeg",
+          "email": "danenula@gmail.com",
+          "identifier": {
+            "@type": "PropertyValue",
+            "name": "IČO",
+            "value": "23970341"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ocelkova 643/20",
+            "postalCode": "198 00",
+            "addressLocality": "Praha 9 – Černý Most",
+            "addressCountry": "CZ"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.danenula.cz/#website",
+          "url": "https://www.danenula.cz/",
+          "name": "DaněNula.cz",
+          "inLanguage": "cs-CZ",
+          "publisher": {
+            "@id": "https://www.danenula.cz/#organization"
+          },
+          "creator": {
+            "@type": "Organization",
+            "@id": "https://philoagency.com/#organization",
+            "name": "Philo Agency",
+            "url": "https://philoagency.com/"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -249,6 +305,9 @@
 
     <footer>
         © 2026 DaněNula.cz – Všechna práva vyhrazena
+        <p class="footer-credit">
+          Web vytvořila <a href="https://philoagency.com/" rel="noopener">Philo Agency</a>
+        </p>
     </footer>
 
 </body>

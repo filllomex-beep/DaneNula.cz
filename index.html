@@ -17,6 +17,51 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="index.css">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.danenula.cz/#organization",
+          "name": "DaněNula.cz",
+          "legalName": "Filipp Lomakin",
+          "url": "https://www.danenula.cz/",
+          "logo": "https://www.danenula.cz/assets/logo.jpeg",
+          "email": "danenula@gmail.com",
+          "identifier": {
+            "@type": "PropertyValue",
+            "name": "IČO",
+            "value": "23970341"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ocelkova 643/20",
+            "postalCode": "198 00",
+            "addressLocality": "Praha 9 – Černý Most",
+            "addressCountry": "CZ"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.danenula.cz/#website",
+          "url": "https://www.danenula.cz/",
+          "name": "DaněNula.cz",
+          "inLanguage": "cs-CZ",
+          "publisher": {
+            "@id": "https://www.danenula.cz/#organization"
+          },
+          "creator": {
+            "@type": "Organization",
+            "@id": "https://philoagency.com/#organization",
+            "name": "Philo Agency",
+            "url": "https://philoagency.com/"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -482,6 +527,9 @@
                     <a href="vop.html" target="_blank" rel="noopener noreferrer">Obchodní podmínky</a>
                 </div>
                 <p style="margin: 0; font-size: var(--text-sm);">© 2026 DaněNula.cz - Všechna práva vyhrazena</p>
+                <p class="footer-credit">
+                  Web vytvořila <a href="https://philoagency.com/" rel="noopener">Philo Agency</a>
+                </p>
             </div>
         </div>
     </footer>
